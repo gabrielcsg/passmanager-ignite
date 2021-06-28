@@ -28,9 +28,10 @@ export function Home() {
 
   async function loadData() {
     const responseData = await AsyncStorage.getItem(dataKey);
-    const responseDataFormatted = responseData ? JSON.parse(responseData) : [];
-    setData(responseDataFormatted);
-    setSearchListData(responseDataFormatted);
+    if (responseData) {
+      setData(JSON.parse(responseData));
+      setSearchListData(JSON.parse(responseData));
+    }
   }
 
   useEffect(() => {
